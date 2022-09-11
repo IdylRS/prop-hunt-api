@@ -51,7 +51,7 @@ const getPropHuntUser = (users) => {
     const userList = users.split(",");
     const hunters = getPropHuntFile();
 
-    return userList.map(u => hunters[u]),filter(n => n);
+    return userList.map(u => hunters[u]).filter(n => n);
 }
 
 const updatePropHuntUser = (user, data) => {
