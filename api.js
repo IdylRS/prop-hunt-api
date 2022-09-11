@@ -30,7 +30,7 @@ app.get('/prop-hunters', (req, res) => {
 
 app.post('/prop-hunters/:user', (req, res) => {
     const { user } = req.params;
-    const { update } = req.body;
+    const update = req.body;
 
     if(!update) {
         res.status(418).send({ message: 'No data sent to update '});
