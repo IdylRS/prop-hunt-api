@@ -9,13 +9,13 @@ app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
 });
 
-app.get('/prop-hunters/:user', (req, res) => {
-    const { user } = req.params;
+app.get('/prop-hunters/:users', (req, res) => {
+    const { users } = req.params;
 
-    const propHunters = getPropHuntUser(user);
+    const propHunters = getPropHuntUser(users);
 
     if(!propHunters) {
-        res.status(418).send({ message: 'No user with that username found.' });
+        res.status(418).send({ message: 'No users with those usernames found.' });
     }
 
     res.status(200).send(JSON.stringify(propHunters));
@@ -47,10 +47,11 @@ const getPropHuntFile = () => {
     return JSON.parse(file);
 }
 
-const getPropHuntUser = (user) => {
+const getPropHuntUser = (users) => {
+    const userList = users.split(",");
     const hunters = getPropHuntFile();
 
-    return hunters[user];
+    return userList.map(u => hunters[u]);
 }
 
 const updatePropHuntUser = (user, data) => {
