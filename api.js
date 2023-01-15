@@ -16,8 +16,6 @@ app.get('/prop-hunters/:users', (req, res) => {
 
     const propHunters = getPropHuntUser(users);
 
-    console.log(`Got users: ${propHunters}`);
-
     if(!propHunters) {
         res.status(418).send({ message: 'No users with those usernames found.' });
     }
