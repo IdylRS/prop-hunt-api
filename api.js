@@ -12,8 +12,6 @@ app.listen(PORT, () => {
 app.get('/prop-hunters/:users', (req, res) => {
     const { users } = req.params;
 
-    console.log(`Getting users: ${users}`);
-
     const propHunters = getPropHuntUser(users);
 
     if(!propHunters) {
