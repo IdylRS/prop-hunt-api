@@ -12,7 +12,11 @@ app.listen(PORT, () => {
 app.get('/prop-hunters/:users', (req, res) => {
     const { users } = req.params;
 
+    console.log(`Getting users: ${users}`);
+
     const propHunters = getPropHuntUser(users);
+
+    console.log(`Got users: ${propHunters}`);
 
     if(!propHunters) {
         res.status(418).send({ message: 'No users with those usernames found.' });
@@ -31,6 +35,8 @@ app.get('/prop-hunters', (req, res) => {
 app.post('/prop-hunters/:user', (req, res) => {
     const { user } = req.params;
     const update = req.body;
+
+    user.replaceAll('%20', ' ');
 
     if(!update) {
         res.status(418).send({ message: 'No data sent to update '});
