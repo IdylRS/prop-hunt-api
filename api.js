@@ -59,6 +59,8 @@ const getPropHuntUser = (users) => {
 const updatePropHuntUser = (user, data) => {
     let propHunters = getPropHuntFile();
 
+    if(!data.orientation) data.orientation = 0;
+
     propHunters[user] = data;
 
     fs.writeFileSync('./prop-hunters.json', JSON.stringify(propHunters));
